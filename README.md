@@ -15,7 +15,7 @@ Appeal is still in the early stages of development. Please, use with caution. Mi
 
 Appeal is available via Swift Package Manager:
 1. In Xcode, go to File → Add Packages...
-2. Enter `https://github.com/...` into the search field.
+2. Enter `https://github.com/appeal2/appeal-swift-client.git` into the search field.
 3. Set Dependency Rule to Up to Next Major Version and press Add Package
 
 `Please note: the Client doesn’t have UIKit integration at the moment.`
