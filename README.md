@@ -1,6 +1,6 @@
 # Appeal
 
-<img width="1373" alt="viz-1" src="https://github.com/andgordio/UXMClient/assets/31099945/a18edcf2-0182-4bc6-9a19-5a66259d0cac">
+<img width="1461" alt="viz-1" src="https://github.com/appeal2/appeal-swift-client/assets/31099945/1ec8b467-56aa-4e1d-b8c0-58b47dea9040">
 
 Appeal is imagined to be a suite of tools that streamline communication between iOS developers and their users. In its current state, Appeal is a single integration of What’s New screen that allows developers to inform users about updates in the latest version of the app.
 
