@@ -23,9 +23,10 @@ Add Appeal to your SwiftUI<sup>1</sup> app via Swift Package Manager:
 <sup>1</sup> Appeal doesn’t have an integration with UIKit at the moment.
  ‏‏‎ ‎
   ‏‏‎ ‎
-### 💻 Dashboard
+### 💻 Dashboard App
 
-Join macOS TestFlight program to access the Dashboard that allows to create accounts, manage apps and releases:
+Join the macOS TestFlight program to access the Dashboard app. It allows to create accounts, manage apps and releases.
+
 [Join TestFlight](https://testflight.apple.com/join/U0ZIIlhT)
  ‏‏‎ ‎‎ ‎
   ‏‏‎ ‎
@@ -33,20 +34,23 @@ Join macOS TestFlight program to access the Dashboard that allows to create acco
   ‏‏‎ ‎
 ## Initialization
 
-1. Create a new app in the Dashboard and copy the generated ID. 
-2. Import Appeal.
-3. Initialize Appeal when the `@main App` is initialized:
+### SwiftUI
+
+1. Create a new app in the Dashboard app and copy the generated ID. 
+2. Import Appeal into a file where your `@main App` is located.
+3. Create an instance of AppealConfiguration using the copied ID when the `@main App` is initialized.
+4. Initialize Appeal with the newly created AppealConfiguration. 
 
 ```swift
-import SwiftUI
 import Appeal // ← 2
+import SwiftUI
 
 @main
 struct AppealDemo: App {
 
     init() {
-        let config = AppealConfiguration(appId: "<#APP_ID#>")
-        Appeal.initialize(with: config)                     // ← 3
+        let config = AppealConfiguration(appId: "<#APP_ID#>")   // ← 3
+        Appeal.initialize(with: config)                         // ← 4
     }
     
     var body: some Scene {
@@ -57,8 +61,39 @@ struct AppealDemo: App {
 }
 ```
 
-3. Add `.withWhatsNew()` view modifier to a view that you think is appropriate to be overlayed with What’s New screen. 
-   - For example, you may want to attach it to the first view that users see once they are authenticated. This way the updates are presented at the beginning of the core user experience without interrupting the authentication and onboarding flows. 
+### UIKit
+
+1. Create a new app in the Dashboard app and copy the generated ID.
+2. Import Appeal into `AppDelegate.swift`
+3. In `application(didFinishLaunchingWithOptions)`, create an instance of AppealConfiguration using the copied ID
+4. Initialize Appeal with the newly created AppealConfiguration. 
+
+```swift
+import Appeal // ← 2
+import UIKit
+
+func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+) -> Bool {
+    
+    let config = AppealConfiguration(appId: "<#APP_ID#>")   // ← 3
+    Appeal.initialize(with: config)                         // ← 4
+    
+    return true
+}
+
+```
+
+## Integrating What’s New Screen
+
+You can attach What’s New to any view in your app. When the view appears, What’s New reads the current version of the app together with the latest update shown on the device and compares them with the releases you created in the Dashboard app. If there is a relevant update that a user hasn’t seen yet, a sheet is presented.
+
+You might want to attach it to the first view that users see once they are authenticated. This way the updates are presented at the beginning of the core user experience without interrupting the authentication and onboarding flows. 
+
+### SwiftUI
+
+Add `.withWhatsNew()` view modifier to a view that you think is appropriate to be overlayed with What’s New screen.
 
 ```swift
 struct NavigationManager: View {
@@ -75,6 +110,27 @@ struct NavigationManager: View {
     }
 }
 ``` 
+
+### UIKit
+
+Import SwiftUI and Appeal. Add `WhatsNewHostingView` to a view that you think is appropriate to be overlayed with What’s New screen.
+
+```swift
+import Appeal  // ← !
+import UIKit
+import SwiftUI // ← !
+
+class MainAppFlow: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let whatsNewController = UIHostingController(rootView: WhatsNewHostingView())
+        addChild(whatsNewController)
+        view.addSubview(whatsNewController.view)
+    }
+}
+```
  ‏‏‎ ‎‎ ‎
   ‏‏‎ ‎
  ‏‏‎ ‎
