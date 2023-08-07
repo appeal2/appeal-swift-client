@@ -141,7 +141,9 @@ class MainAppFlow: UIViewController {
    - Title, body and the image are required.
 3. Build your SwiftUI app with the specified version.
 4. By default, What’s New view is shown only once for each new version of the app on a device. You can configure Appeal to show What’s New on every launch when build configuration is set to Debug:
-```
+
+```swift
 let config = AppealConfiguration(appId: "<#APP_ID#>", persistInDebug: true)
 ```
+
    - This setting does not affect AppStore builds. Your users will always see only the latest available What’s New screen only once.
