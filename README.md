@@ -65,7 +65,7 @@ struct AppealDemo: App {
 
 1. Create a new app in the Dashboard app and copy the generated ID.
 2. Import Appeal into `AppDelegate.swift`
-3. In `application(didFinishLaunchingWithOptions)` create an instance of AppealConfiguration using the copied ID
+3. In `application(didFinishLaunchingWithOptions)`, create an instance of AppealConfiguration using the copied ID
 4. Initialize Appeal with the newly created AppealConfiguration. 
 
 ```swift
@@ -83,11 +83,11 @@ func application(
     return true
 }
 
-````
+```
 
 ## Integrating What’s New Screen
 
-You can attach What’s New to any view in your app. When the view appears, What’s New checks the current version of the app together with the latest update shown on the device and compares them with the releases you created in the Dashboard app. If there is a relevant update that a user hasn’t seen yet, a sheet is presented.
+You can attach What’s New to any view in your app. When the view appears, What’s New reads the current version of the app together with the latest update shown on the device and compares them with the releases you created in the Dashboard app. If there is a relevant update that a user hasn’t seen yet, a sheet is presented.
 
 You might want to attach it to the first view that users see once they are authenticated. This way the updates are presented at the beginning of the core user experience without interrupting the authentication and onboarding flows. 
 
