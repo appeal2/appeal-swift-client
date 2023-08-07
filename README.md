@@ -15,12 +15,10 @@ Currently, Appeal allows to manage What’s New screen that presents the latest 
 
 ### 📦 Swift Package
 
-Add Appeal to your SwiftUI<sup>1</sup> app via Swift Package Manager:
+Add Appeal to your app via Swift Package Manager:
 1. In Xcode, go to `File → Add Packages...`
 2. Enter `https://github.com/appeal2/appeal-swift-client.git` into the search field.
-3. Set Dependency Rule to `Up to Next Major Version` and press Add Package
-
-<sup>1</sup> Appeal doesn’t have an integration with UIKit at the moment.
+3. Set Dependency Rule to `Up to Next Major Version` and press Add Package.
  ‏‏‎ ‎
   ‏‏‎ ‎
 ### 💻 Dashboard App
