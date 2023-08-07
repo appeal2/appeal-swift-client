@@ -8,6 +8,9 @@
 import SwiftUI
 
 public struct WhatsNewHostingView: View {
+    
+    public init() {}
+    
     public var body: some View {
         EmptyView()
             .withWhatsNew()
